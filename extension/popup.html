@@ -1,17 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Advanced Mail Tracker</title>
-  <style>
-    body { font-family: Arial, sans-serif; width: 350px; padding: 10px; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 5px 0; }
-    .event { margin-left: 20px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section Toggle Page</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h3>Tracked Emails</h3>
-  <ul id="trackedEmails"></ul>
+  <header>
+    <div class="header-content">
+      <h1>Job Application Tracker</h1>
+      <div class="nav-buttons">
+        <button class="nav-btn active" data-section="job-analyzer">Job Analyzer</button>
+        <button class="nav-btn" data-section="mail-tracking">Mail Tracking</button>
+        <button class="nav-btn" data-section="dashboard">Dashboard</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Job Analyzer Section -->
+    <div id="job-analyzer" class="section active">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Job Analyzer</h2>
+          <p>Analyze job postings and get tailored application materials</p>
+        </div>
+        <div class="content">
+          <form class="submit-form" onsubmit="analyzeJob(event)">
+            <div class="form-group">
+              <label for="job-url">Job Posting URL</label>
+              <input type="url" id="job-url" class="form-input" placeholder="https://example.com/job-posting" required>
+            </div>
+            <button type="submit" class="submit-btn" id="analyze-btn">
+              Analyze Job
+            </button>
+          </form>
+
+          <div class="quick-stats">
+            <div class="stat-card">
+              <div class="stat-number" id="total-analyzed">12</div>
+              <div class="stat-label">Jobs Analyzed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="applications-sent">8</div>
+              <div class="stat-label">Applications Sent</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="response-rate">25%</div>
+              <div class="stat-label">Response Rate</div>
+            </div>
+          </div>
+
+          <div class="jobs-table-container">
+            <table class="jobs-table">
+              <thead>
+                <tr>
+                  <th>Company</th>
+                  <th>Position</th>
+                  <th>Analyzed Date</th>
+                  <th>Status</th>
+                  <th>Match Score</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="jobs-table-body">
+                <!-- Jobs will be populated by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mail Tracking Section -->
+    <div id="mail-tracking" class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Mail Tracking</h2>
+          <p>Monitor your application emails and track engagement</p>
+        </div>
+        <div class="content">
+          <div id="mail-list">
+            <!-- Mail items will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <h2>Dashboard</h2>
+          <p>Comprehensive overview of your job search progress</p>
+        </div>
+        <div class="content">
+          <div class="empty-state">
+            <div class="empty-state-icon">📊</div>
+            <h3>Dashboard Coming Soon</h3>
+            <p>Detailed analytics and insights will be available here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="popup.js"></script>
 </body>
+
 </html>
